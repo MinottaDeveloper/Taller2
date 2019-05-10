@@ -10,12 +10,28 @@ app.use(express.urlencoded({ extended: true }));
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-/*@@ -15,4 +40,55 @@ app.get('/', function(request, response){*/
-    response.render('home', contexto);
-//});
+   // response.render('home', contexto);
 
-app.get('/tienda/:categoria?', function(request, response){
+app.get('/tienda', function(request, response){
+response.render("tienda", {})
+});
 
+
+app.get('/carrito-compras', function(request, response){
+    response.render("carrito-compras", {})
+    });
+
+    app.get('/checkout', function(request, response){
+        response.render("checkout", {})
+        });
+
+        app.get('/producto-interno', function(request, response){
+            response.render("producto-interno", {})
+            });
+        
+
+app.get('', function(request, response){
+response.sendfile("/index.html")
 });
 
 app.get('/tienda/producto/:nombre', function(req, res){
