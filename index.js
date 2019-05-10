@@ -45,7 +45,25 @@ app.get("/tienda", function(request, response){
         contexto.productos = result;
         response.render("tienda", contexto);
     });
+ 
 
+
+
+app.get('/carrito-compras', function(request, response){
+    response.render("carrito-compras", {})
+    });
+
+    app.get('/checkout', function(request, response){
+        response.render("checkout", {})
+        });
+
+        app.get('/producto-interno', function(request, response){
+            response.render("producto-interno", {})
+            });
+        
+
+app.get('', function(request, response){
+response.sendfile("/index.html")
 });
 
 app.get('/tienda/producto/:nombre', function(req, res){
