@@ -134,17 +134,17 @@
 
       <div class="lista_productos">
 
-
-        <a href="producto-interno">
+        {{#each productos}}
+        <a href="/producto/{{nombre}}">
           <div class="productoHome">
-            <img src="https://http2.mlstatic.com/morral-maletin-totto-S_707146-MCO27623448798_062018-F.jpg"
+            <img src="{{imagen}}"
               alt="Imagen_producto">
-            <p>Maletin Totto edición UTAP 2019</p>
-            <h3>$190.000</h3>
+            <p>{{nombre}}</p>
+            <h3>{{precio}}</h3>
             <img class="star-bar" src="https://i.stack.imgur.com/S8yqK.png" alt="star">
           </div>
         </a>
-
+        {{/each}}
        
       </div>
 

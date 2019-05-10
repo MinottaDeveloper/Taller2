@@ -46,7 +46,29 @@ app.get("/tienda", function(request, response){
         response.render("tienda", contexto);
     });
  
+});
 
+app.get("/producto/:item?", function(request, response){
+
+    let id = request.params.item;
+
+    if(id!=null){
+        
+        let collection = database.collection("productos");
+        let query= {nombre:id};
+        let contexto = {};
+    
+        collection.find(query).toArray(function(error, result){
+            contexto = result;
+            response.render("producto-interno", contexto[0]);
+
+            console.log(contexto[0]);
+
+    
+
+    }); 
+}
+});
 
 
 app.get('/carrito-compras', function(request, response){
