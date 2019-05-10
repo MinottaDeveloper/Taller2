@@ -39,10 +39,10 @@ app.get("/tienda", function(request, response){
 
     let collection = database.collection("productos");
     let query= {
-        categoria: 'Maletines'
+       // categoria: 'Maletines'
     };
     let options = {
-        sort:[["precio", 'descending' ]]
+        sort:[["popularidad", 'descending' ]]
         //sort:[["precio", 'ascending' ]]
     };
     let contexto = {};
@@ -54,28 +54,92 @@ app.get("/tienda", function(request, response){
  
 });
 
-app.get("/producto/:item?", function(request, response){
+app.get("/producto/:item?/:order?", function(request, response){
+
+    let id = request.params.item;
+    let orden = request.params.order;
+
+    if(id!=null){
+        
+        let collection = database.collection("productos");
+        let query= {nombre:id};
+        let options = {};
+        let contexto = {};
+
+        if(orden != null){
+            options = {
+                sort:[[id, orden ]]
+                //sort:[["precio", 'ascending' ]]
+            };
+        }
+    
+        collection.find(query, options).toArray(function(error, result){
+            contexto = result;
+            response.render("producto-interno", contexto[0]);
+
+            console.log(contexto[0]);
+
+            
+    
+
+    }); 
+}
+});
+/*
+app.get("/categorias/:item?/:order?", function(request, response){
+
+    let id = request.params.item;
+    let orden = request.params.order;
+
+    if(id!=null){
+        
+        let collection = database.collection("productos");
+        let query= {nombre:id};
+        let options = {};
+        let contexto = {};
+
+        if(orden != null){
+            options = {
+                sort:[[id, orden ]]
+                //sort:[["precio", 'ascending' ]]
+            };
+        }
+    
+        collection.find(query, options).toArray(function(error, result){
+            contexto = result;
+            response.render("producto-interno", contexto[0]);
+
+            console.log(contexto[0]);
+
+            
+    
+
+    }); 
+}
+});
+*/
+
+app.get("/categoria/:item?", function(request, response){
 
     let id = request.params.item;
 
     if(id!=null){
         
         let collection = database.collection("productos");
-        let query= {nombre:id};
+        let query= {categoria:id};
         let contexto = {};
     
         collection.find(query).toArray(function(error, result){
-            contexto = result;
-            response.render("producto-interno", contexto[0]);
-
-            console.log(contexto[0]);
+            contexto.productos = result;
+            response.render("tienda", contexto);
+            
+            console.log(contexto);
 
     
 
     }); 
 }
 });
-
 
 app.get('/carrito-compras', function(request, response){
     response.render("carrito-compras", {})
