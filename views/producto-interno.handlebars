@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/producto-interno.css">
+    <script src="/javascript/producto-interno.js"></script>
     <title>Productos</title>
 </head>
 <body>
@@ -46,7 +47,7 @@
                       <a href="#">
                         <li>Contacto</li>
                       </a>
-                      <a href="tienda">
+                      <a href="../tienda">
                         <li>Tienda</li>
                       </a>
                     </ul>
@@ -71,11 +72,14 @@
 
               <div class="division_horizontales">
                 <div class="imagen-producto">
-                    <img src="{{imagen}}" alt="">
+                    <img src="{{imagen}}" alt="" id="myimage">
                 </div>
 
+                
+
+                <div class="division-derecha">
                 <div class="detalles-producto">
-                    <a href="./carrito-compras">
+                    <a href="../carrito-compras">
                             <div class="carrito_compras">
                               <h2 class="cant_productos_carrito">2</h2>
                               <img class="carrito_icon" src="https://static.thenounproject.com/png/16757-200.png" alt="">
@@ -88,7 +92,24 @@
 
                     <h1 class="nombre-producto">{{nombre}}</h1>
                     <p class="descripcion-producto">{{descripcion}}</p>
+
+                    <div class="div-zoom-horinzon">
+                    <!---->
+                <div class="div-zoom">                
+                <div class="img-zoom-container zoom" >  
+                <div id="myresult" class="img-zoom-result"></div>
+                </div>
+
+                </div>
+
+                <script>
+        // Initiate zoom effect:
+        imageZoom("myimage", "myresult");
+        </script>
+                <!---->
                     <h1 class="precio-producto">$ {{precio}}.000</h1>
+                </div>
+
 
                     <div class="boton">
                         <a href="#">
@@ -96,6 +117,36 @@
                     </a>
                     </div>
                 </div>
+              </div>
+              </div>
+
+              <div class="pop-up">
+                  <div class="mensaje-pop">
+                    <div class="titulo">
+                    <h3>Tu producto se agregó correctamente</h3>
+                    <a href="../tienda"><h2>X</h2></a>
+                    </div>
+
+                    <div class="divisiones-horizontales">
+                      <div class="div-imagen">
+                        <img src="{{imagen}}" alt="">
+                      </div>
+
+                      <div class="div-descripcion">
+                        <h4>{{nombre}}</h4>
+                        <b><p>$ {{precio}}.000</p></b>
+
+                        <a href="../tienda"><h3>Seguir comprando</h3></a>
+                      </div>
+                    </div>
+
+                    <div class="boton">
+                        <a href="../carrito-compras">
+                        <button class="btn_agregar_producto">IR AL CARRITO</button>
+                    </a>
+                    </div>
+
+                  </div>
               </div>
 
 </body>
