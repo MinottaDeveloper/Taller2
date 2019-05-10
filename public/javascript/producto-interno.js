@@ -72,13 +72,41 @@ function imageZoom(imgID, resultID) {
 function paginaCargada(){
 
     var btn_agregar = document.querySelector(".btn_agregar_producto");
+
+    btn_agregar.addEventListener('click', agregarP);
+
+    function agregarP(){
+
+    let listaDeProdutos = JSON.parse(localStorage.getItem('listaProductos'));
+
+        var name = document.querySelector('.nombre-producto').innerHTML;
+        var price = document.querySelector('#precio').innerHTML; 
+        var imgUrl = document.querySelector('#myimage').src; 
+
+        var prod = {
+            nombre: name,
+            precio: price,
+            imgUrl: imgUrl
+        }
+
+        listaDeProdutos.push(prod);
+
+        localStorage.setItem('listaProductos', JSON.stringify(listaDeProdutos));
+    }
+
     var popUp = document.querySelector(".pop-up");
+    var btn_cerrar = document.querySelector(".cerrar_popUp");
 
     function mostrarPop(){
         popUp.style.display= "flex";
     }
 
-    //btn_agregar.addEventListener("click", mostrarPop());
+    function ocultarPop(){
+        popUp.style.display= "none"
+    }
+
+    btn_agregar.addEventListener("click", mostrarPop);
+    btn_cerrar.addEventListener("click", ocultarPop);
 
 }
 

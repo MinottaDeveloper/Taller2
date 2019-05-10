@@ -107,12 +107,12 @@
         imageZoom("myimage", "myresult");
         </script>
                 <!---->
-                    <h1 class="precio-producto">$ {{precio}}.000</h1>
+                    <h1 class="precio-producto">$ <span id="precio">{{precio}}</span>.000</h1>
                 </div>
 
 
                     <div class="boton">
-                        <a href="#">
+                        
                         <button class="btn_agregar_producto">AGREGAR AL CARRITO</button>
                     </a>
                     </div>
@@ -124,7 +124,7 @@
                   <div class="mensaje-pop">
                     <div class="titulo">
                     <h3>Tu producto se agregó correctamente</h3>
-                    <a href="../tienda"><h2>X</h2></a>
+                    <a class="cerrar_popUp" href="#"><h2>X</h2></a>
                     </div>
 
                     <div class="divisiones-horizontales">

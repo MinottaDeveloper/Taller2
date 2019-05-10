@@ -21,7 +21,7 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'tienda';
 
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useNewUrlParser: true});
 
 var database = null;
 
@@ -38,10 +38,16 @@ client.connect(function(err) {
 app.get("/tienda", function(request, response){
 
     let collection = database.collection("productos");
-    let query= {};
+    let query= {
+        categoria: 'Maletines'
+    };
+    let options = {
+        sort:[["precio", 'descending' ]]
+        //sort:[["precio", 'ascending' ]]
+    };
     let contexto = {};
 
-    collection.find(query).toArray(function(error, result){
+    collection.find(query, options).toArray(function(error, result){
         contexto.productos = result;
         response.render("tienda", contexto);
     });
