@@ -20,24 +20,16 @@ for (let index = 0; index < listaProductos.length; index++) {
       <h4>${element.nombre}</h4>
       <p>NUEVO</p>
       <div class="cantidad-div">
-        <p>Cantidad:</p>  
+        <p>Cantidad: 1</p>  
     
-        <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-           
-          </select>
+        
       </div>
       <h4 class="precio-producto">${element.precio}.000</h4>
     </div>
     </div>`;
 }
 
-document.querySelector('#precioTotal').innerHTML = '$'+ precioTotal + ".000";
+document.querySelector(".precioSubtotal").innerHTML = '$' + precioTotal + ".000";
+
+var sumaTotal = precioTotal + 50;
+document.querySelector('#precioTotal').innerHTML = '$'+ sumaTotal + ".000";

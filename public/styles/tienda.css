@@ -457,4 +457,24 @@ footer .redes-sociales img {
   height: 50px;
   margin-right: 10px;
 }
+
+.checked {
+  color: orange;
+}
+
+.cant-estrellas {
+  display: none;
+}
+
+.ratingbar3 {
+  display: none;
+}
+
+.ratingbar4 {
+  display: block;
+}
+
+.ratingbar5 {
+  display: none;
+}
 /*# sourceMappingURL=tienda.css.map */
