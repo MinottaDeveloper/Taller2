@@ -17,7 +17,7 @@
     <section class="hamburguesa__logo"></section>
     <section class="hamburguesa__icono"></section>
   </section>
-  <section class="hamburguesa__menu"></section>
+  <section class="hamburguesa__menu view__elemento"></section>
 
 
   <header class="encabezado">
@@ -142,7 +142,11 @@
         {{#each productos}}
         <a href="/producto/{{nombre}}">
           <div class="productoHome">
-            <img src="{{imagen}}" alt="Imagen_producto">
+            <div>
+              <img src="{{imagen}}" alt="Imagen_producto">
+            </div>
+
+            <div>
             <p>{{nombre}}</p>
             <h3>$ {{precio}}.000</h3>
 
@@ -173,6 +177,7 @@
             <span class="fa fa-star checked"></span>
             </div>
             <!--Intento de ratingbar-->
+            </div>
           </div>
         </a>
         {{/each}}

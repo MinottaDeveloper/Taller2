@@ -471,10 +471,108 @@ footer .redes-sociales img {
 }
 
 .ratingbar4 {
-  display: block;
+  display: none;
 }
 
 .ratingbar5 {
   display: none;
+}
+
+.hamburguesa__menu {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .enlaces-footer {
+    display: none;
+  }
+  .hamburguesa {
+    display: block;
+  }
+  .encabezado {
+    display: none;
+  }
+  footer .columnas-footer {
+    padding-left: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  footer .enlaces-footer {
+    margin: 0;
+    text-align: center;
+  }
+  footer .logo {
+    padding-left: 0;
+  }
+  .conocer-servicios, .columnas-footer {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    text-align: center;
+    padding: 0;
+  }
+  .comenzar-ahora {
+    width: 100%;
+    text-align: center;
+  }
+  .comenzar-ahora p {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .opciones-iniciales {
+    width: 100%;
+  }
+  footer .enlaces-footer p {
+    margin-top: 50px;
+  }
+  .text {
+    font-size: 10px;
+    padding: 0;
+  }
+  .tabla-programas {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-left: 30px;
+  }
+  .tabla-programas img {
+    width: 80%;
+    height: 40%;
+    margin-left: 30px;
+  }
+  .cat_izquierda {
+    display: none;
+  }
+  .divisiones_horizontales .productos_derecha .lista_productos {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .divisiones_horizontales .productos_derecha .productoHome {
+    width: 445px;
+  }
+  .divisiones_horizontales .productos_derecha {
+    margin-left: 0;
+  }
+  .divisiones_horizontales .productos_derecha .productoHome img {
+    width: 100px;
+  }
+  .productoHome {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 /*# sourceMappingURL=tienda.css.map */

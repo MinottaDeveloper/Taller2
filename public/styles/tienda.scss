@@ -418,18 +418,25 @@ footer{
 }
 
 .ratingbar3{
-  display: none
+  display: none;
 }
 
 
 .ratingbar4{
-  display: block;
+  display: none;
 }
 
 
 .ratingbar5{
   display: none
 }
+
+.hamburguesa__menu {
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+
 
 //RESPONSIVE------------------------------------------------------
 
@@ -470,22 +477,6 @@ footer{
 
   }
 
-  .slideshow-container{
-    margin-top: 60px;
-    img{
-      height: 200px;
-    }
-  }
-
-  .newsletter .formulario{
-    margin: 10px;
-    margin-top: 60px;
-  }
-
-  .newsletter .formulario .ingresar-mail{
-    margin: 0;
-  }
-
   .comenzar-ahora{
     width: 100%;
     text-align: center;
@@ -518,5 +509,30 @@ footer{
     width: 80%;
     height: 40%;
     margin-left: 30px;
+  }
+
+
+  .cat_izquierda{
+    display: none;
+  }
+
+  .divisiones_horizontales .productos_derecha .lista_productos{ 
+  flex-direction: column;
+  }
+  .divisiones_horizontales .productos_derecha .productoHome{
+    width: 445px;
+  }
+
+  .divisiones_horizontales .productos_derecha{
+    margin-left: 0;
+  }
+
+  .divisiones_horizontales .productos_derecha .productoHome img{
+    width: 100px;
+  }
+
+  .productoHome{
+    display: flex;
+    flex-direction: row;
   }
 }

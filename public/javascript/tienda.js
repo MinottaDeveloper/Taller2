@@ -1,53 +1,36 @@
-function pantallaCargada() {
+function pantallaCargada(globalEvent) {
 
-    var cantEstrellas = document.querySelector(".num-estrellas");
-    var Rating3 = document.querySelector(".ratingbar3");
-    var Rating4 = document.querySelector(".ratingbar4");
-    var Rating5 = document.querySelector(".ratingbar5");
-
-    var plantilla = document.querySelector(".productoHome");
-
-  
-
-    cantEstrellas = cantEstrellas.innerHTML;
+    var cantEstrellas = document.querySelectorAll(".num-estrellas");
+    var Rating3 = document.querySelectorAll(".ratingbar3");
+    var Rating4 = document.querySelectorAll(".ratingbar4");
+    var Rating5 = document.querySelectorAll(".ratingbar5");
 
 
-    /* var span = document.createElement("span");
-    
-    span.setAttribute("class", "fa fa-star checked");
-   // document.body.appendChild(p);
-    divRating.appendChild(span);
-    divRating.appendChild(span);
-    divRating.appendChild(span);
-    divRating.appendChild(span);
-    */
+   // console.log(cantEstrellas);
+   cantEstrellas.forEach((e)=>{
+     console.log(e)
+   })
 
-    console.log(cantEstrellas);
+    Rating3.forEach((element, index) => {
+      if (cantEstrellas[index].innerHTML == "3") {
+        element.style.display = "block";
+    }});
 
+    Rating4.forEach((element, index) => {
+      if (cantEstrellas[index].innerHTML == "4") {
+        element.style.display = "block";
+    }});
 
-    if (cantEstrellas == 3) {
-        Rating3.style.display = "block";
-    } else if (cantEstrellas == 4) {
-        Rating4.style.display = "block";
-    } else if (cantEstrellas == 5) {
-        Rating5.style.display = "block";
-        Rating4.style.display = "none";
-    }
+    Rating5.forEach((element, index) => {
+      if (cantEstrellas[index].innerHTML == "5") {
+        element.style.display = "block";
+    }});
+
 
     //----------------------------------------------------------
 
 
     var cantProductos = document.querySelector("cant_productos_carrito");
-
-   // cantProductos.innerHTML = localStorage.getItem('listaProductos').length;
-
-
-    //let listaDeProdutos = JSON.parse(localStorage.getItem('listaProductos'));  
-
-
-
-
-
 
     //RESPONSIVE------------------------------------------
 
@@ -62,21 +45,27 @@ function pantallaCargada() {
   seccion.logoSecon = document.querySelector(".hamburguesa__logo");
   seccion.menuPrin = document.querySelector(".navegacion-bar");
   seccion.menuSecon = document.querySelector(".hamburguesa__menu");
-  resizeCont();
-  function resizeCont() {
-  
-    if($(window).width() < 720){
+  resizeCont(globalEvent);
+  function resizeCont(event) {
+
+    let width = event.currentTarget.innerWidth;
+    if(width < 720){
       seccion.logoSecon.appendChild(menu.logo);
       seccion.menuSecon.appendChild(menu.nav);
     }else{
       seccion.logoPrin.appendChild(menu.logo);
       seccion.menuPrin.appendChild(menu.nav);}
   }
-  $(window).resize(resizeCont);
-
+  window.addEventListener("resize", resizeCont);
+  let varia = document.querySelector(".hamburguesa__menu");
+  varia.style.height = "0px";
   menu.boton.addEventListener("click", function(){
 
-    $(".hamburguesa__menu").toggle("slow");
+    if(varia.style.height == "350px"){
+      varia.style.height = "0px";
+    }else{
+      varia.style.height = "350px";
+    }
    
   });
 
