@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-
+app.use(express.urlencoded({extended:true}));
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
@@ -35,7 +35,45 @@ client.connect(function (err) {
 });
 
 
+app.post('/pago', function(request, response){
+    // crear un archivo con la información del usuario
+    console.log(request.body);
 
+    let productos = request.body.productos;
+    if(productos != null){
+        JSON.parse(productos);
+    }else{
+        productos = {};
+    }
+    var pedido = {
+        nombre: request.body.nombre,
+        telefono: request.body.telefono,
+        direccion: request.body.direccion,
+        departamento: request.body.departamento,
+        apellidos: request.body.apellidos,
+        cedula: request.body.cedula,
+        barrio: request.body.barrio,
+        ciudad: request.body.ciudad,
+        tipoTarjeta: request.body.tipoTarjeta,
+        banco: request.body.banco,
+        tipoDocumento: request.body.tipoDocumento,
+        numeroTarjeta: request.body.numeroTarjeta,
+        nombreTitular: request.body.nombreTitular,
+        numeroDocumento: request.body.numeroDocumento,
+    
+        
+        productos: productos,
+        fecha: new Date(),
+        estado: 'nuevo'
+    };
+
+    var collection = database.collection('pedidos');
+    collection.insertOne(pedido, function(err){
+        assert.equal(err, null);
+
+        console.log('pedido guardado');
+    });
+});
 
 app.get("/tienda/:order?", function (request, response) {
 

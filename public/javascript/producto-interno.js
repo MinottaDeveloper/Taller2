@@ -76,8 +76,13 @@ function paginaCargada(){
     btn_agregar.addEventListener('click', agregarP);
 
     function agregarP(){
+        let listaDeProdutos;
 
-    let listaDeProdutos = JSON.parse(localStorage.getItem('listaProductos'));
+        if(listaDeProductos!=null){
+            listaDeProdutos = JSON.parse(localStorage.getItem('listaProductos'));
+        }else{
+            listaDeProdutos = {};
+        }
 
         var name = document.querySelector('.nombre-producto').innerHTML;
         var price = document.querySelector('#precio').innerHTML; 

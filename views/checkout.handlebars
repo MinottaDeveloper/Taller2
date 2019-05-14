@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/checkout.css">
+    
     <title>CheckOut</title>
 </head>
 <body>
@@ -72,37 +73,37 @@
 
 <div class="divisiones-horizontales">
 <div class="formulario">
-
+<form action="/pago" name="formulario-datos" method="POST">
   <div class="datos-envio">
     <h3>DIRECCIÓN DE ENVÍO</h3>
 
     <div class="datos-div-horizontal">
      <div class="envio-part1">
        <p>Nombre</p>
-       <input type="text" class="nombre-in">
+       <input type="text" name="nombre">
 
        <p>Teléfono</p>
-       <input type="tel" class="telefono-in">
+       <input type="tel"  name="telefono">
 
        <p>Dirección</p>
-       <input type="number" class="direccion-in">
+       <input type="number" name="direccion">
 
        <p>Departamento</p>
-       <input type="text" class="departamento-in">
+       <input type="text" name="departamento">
      </div>
 
      <div class="envio-part2">
         <p>Apellidos</p>
-        <input type="text" class="apellidos-in">
+        <input type="text" name="apellidos">
  
         <p>Cédula</p>
-        <input type="number" class="cedula-in">
+        <input type="number" name="cedula">
  
         <p>Barrio</p>
-        <input type="text" class="barrio-in">
+        <input type="text" name="barrio">
  
         <p>Ciudad</p>
-        <input type="text" class="ciudad-in">
+        <input type="text" name="ciudad">
      </div>
 
     </div>
@@ -114,14 +115,14 @@
       <div class="datos-div-horizontal">
        <div class="envio-part1">
          <p>Tipo de tarjeta</p>
-         <select class="tipoTarjeta-in">
+         <select name="tipoTarjeta">
             <option value="0">Seleccione un tipo</option>
            <option value="1">Tarjeta de crédito</option>
            <option value="2">Tarjeta débito</option>
          </select>
   
          <p>Banco</p>
-         <select class="banco-in">
+         <select name="banco">
             <option value="0">Seleccione un banco</option>
             <option value="1">BANCO AV VILLAS</option>
             <option value="2">BANCO BBVA</option>
@@ -132,7 +133,7 @@
           </select>
   
          <p>Tipo de documento</p>
-         <select class="tipoDocumento-in">
+         <select name="tipoDocumento">
             <option value="0">Seleccione un tipo</option>
            <option value="1">Cédula de ciudadanía</option>
            <option value="2">Cédula de extranjería</option>
@@ -144,25 +145,29 @@
   
        <div class="envio-part2">
           <p>Número de tarjeta</p>
-          <input type="text" class="numeroTarjeta-in">
+          <input type="text" name="numeroTarjeta">
    
           <p>Nombre del titular</p>
-          <input type="text" class="nombreTitular-in">
+          <input type="text" name="nombreTitular">
    
           <p>Número de documento</p>
-          <input type="text" class="numeroDocumento-in">
+          <input type="text" name="numeroDocumento">
    
        </div>
   
       </div>
     </div>
+
+
+    <input type="hiden" class="input-productos" name="productos">
+    </form>
 </div>
 
 <div class="resumen-pedido">
     <h3>COMPRA FINAL</h3>
    <div class="resumen-renglon">
      <p>Subtotal</p>
-     <p>$0</p>
+     <p>$2.195.000</p>
    </div>
    <div class="resumen-renglon">
       <p>Envío</p>
@@ -178,7 +183,7 @@
         </div>
         <div class="resumen-renglon">
               <p><b>TOTAL</b></p>
-              <p class="valor-total"><b>$0</b></p>                      
+              <p class="valor-total"><b>$2245.000</b></p>                      
           </div>
 
           
@@ -310,4 +315,5 @@
       1075 de 2015 / Resolución 12220 de 2016.</p>
   </footer>
   
+  <script src="/javascript/form.js"></script>
 </html>

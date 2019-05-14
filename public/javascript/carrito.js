@@ -5,6 +5,9 @@ var contenedor = document.querySelector('.productos');
 
 var listaProductos = JSON.parse(localStorage.getItem('listaProductos'));
 
+if(listaProductos != null){
+
+
 for (let index = 0; index < listaProductos.length; index++) {
     const element = listaProductos[index];
 
@@ -28,7 +31,7 @@ for (let index = 0; index < listaProductos.length; index++) {
     </div>
     </div>`;
 }
-
+}
 document.querySelector(".precioSubtotal").innerHTML = '$' + precioTotal + ".000";
 
 var sumaTotal = precioTotal + 50;
