@@ -5,10 +5,12 @@ function pantallaCargada(globalEvent) {
     var Rating4 = document.querySelectorAll(".ratingbar4");
     var Rating5 = document.querySelectorAll(".ratingbar5");
 
+    var orden = document.querySelector(".ordenamientos");
+
 
    // console.log(cantEstrellas);
    cantEstrellas.forEach((e)=>{
-     console.log(e)
+    // console.log(e)
    })
 
     Rating3.forEach((element, index) => {
@@ -68,6 +70,35 @@ function pantallaCargada(globalEvent) {
     }
    
   });
+
+
+  function ordenar(){
+    value = orden.value; //El valor seleccionado
+    text = orden.options[orden.selectedIndex].innerText; //El texto de la opción seleccionada
+
+
+    if(value == 1){
+      console.log("ordenar por popularidad");
+      location.href= "/tienda/popularidad";
+      //sort popularidad
+    }
+
+    if(value == 2){
+      console.log("ordenar por precio menor");
+      location.href= "/tienda/precioMenor";
+      //sort menor precio
+    }
+
+    
+    if(value == 3){
+      console.log("ordenar por precio mayor");
+      location.href= "/tienda/precioMayor";
+      //sort mayor precio
+    }
+  }
+
+  orden.addEventListener("change", ordenar);
+  
 
 }
 

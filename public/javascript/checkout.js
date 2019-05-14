@@ -16,12 +16,25 @@ function paginaCargada(){
     var select_tipoDocumento = document.querySelector(".tipoDocumento-in");
     var numeroDocumento  = document.querySelector(".numeroDocumento-in");
 
-    /*
-    function cambiar(){
-        var select = document.getElementById("Cambio"), //El <select>
-            value = select.value, //El valor seleccionado
-            text = select.options[select.selectedIndex].innerText; //El texto de la opción seleccionada
-    }*/
+    var botonFinalizar = document.querySelector(".boton");
+
+    var datosEnvio = [];
+    var metodoPago = [];
+
+    //factura.push();
+
+
+
+
+    
+    function obtenerSelects(){
+       // var select = document.getElementById("Cambio"), //El <select>
+            value = select_tipoTarjeta.value; //El valor seleccionado
+            text = select_tipoTarjeta.options[select_tipoTarjeta.selectedIndex].innerText; //El texto de la opción seleccionada
+
+            value = select_tipoTarjeta.value; //El valor seleccionado
+            text = select_tipoTarjeta.options[select_tipoTarjeta.selectedIndex].innerText; //El texto de la opción seleccionada
+    }
 
 
 }

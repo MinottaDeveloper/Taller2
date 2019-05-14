@@ -21,12 +21,12 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'tienda';
 
 // Create a new MongoClient
-const client = new MongoClient(url, { useNewUrlParser: true});
+const client = new MongoClient(url, { useNewUrlParser: true });
 
 var database = null;
 
 // Use connect method to connect to the Server
-client.connect(function(err) {
+client.connect(function (err) {
     assert.equal(null, err);
 
     database = client.db(dbName);
@@ -35,55 +35,84 @@ client.connect(function(err) {
 });
 
 
-app.get("/tienda", function(request, response){
+
+
+app.get("/tienda/:order?", function (request, response) {
 
     let collection = database.collection("productos");
-    let query= {
-       // categoria: 'Maletines'
+    let orden = request.params.order;
+    let query = {
+    
+        // categoria: 'Maletines'
     };
     let options = {
-        sort:[["popularidad", 'descending' ]]
+        sort: [["popularidad", 'descending']]
         //sort:[["precio", 'ascending' ]]
     };
     let contexto = {};
 
-    collection.find(query, options).toArray(function(error, result){
+    collection.find(query, options).toArray(function (error, result) {
         contexto.productos = result;
         response.render("tienda", contexto);
     });
- 
+
+    if(orden == 'precioMenor'){
+        options = {
+            //sort: [[id, orden]]
+            sort:[["precio", 'ascending' ]]
+        };
+    }
+
+    if(orden == 'precioMayor'){
+        options = {
+            //sort: [[id, orden]]
+            sort:[["precio", 'descending' ]]
+        };
+    }
+
+    if(orden == 'popularidad'){
+        options = {
+            //sort: [[id, orden]]
+            sort:[["popularidad", 'descending' ]]
+        };
+    }
+
 });
 
-app.get("/producto/:item?/:order?", function(request, response){
+
+app.get("/producto/:item?/:order?", function (request, response) {
 
     let id = request.params.item;
     let orden = request.params.order;
 
-    if(id!=null){
-        
+    if (id != null) {
+
         let collection = database.collection("productos");
-        let query= {nombre:id};
+        let query = { nombre: id };
         let options = {};
         let contexto = {};
 
-        if(orden != null){
+        if (orden != null) {
             options = {
-                sort:[[id, orden ]]
+                sort: [[id, orden]]
                 //sort:[["precio", 'ascending' ]]
             };
+
+            
+
         }
-    
-        collection.find(query, options).toArray(function(error, result){
+
+        collection.find(query, options).toArray(function (error, result) {
             contexto = result;
             response.render("producto-interno", contexto[0]);
 
             console.log(contexto[0]);
 
-            
-    
 
-    }); 
-}
+
+
+        });
+    }
 });
 /*
 app.get("/categorias/:item?/:order?", function(request, response){
@@ -119,50 +148,78 @@ app.get("/categorias/:item?/:order?", function(request, response){
 });
 */
 
-app.get("/categoria/:item?", function(request, response){
+
+app.get("/tienda/:filtro?", function (request, response) {
+
+    var databaseSort;
+
+    let collection = database.collection("productos");
+    collection.find().toArray(function (err, docs) {
+        assert.equal(err, null);
+        databaseSort=docs;
+
+        if(request.params.filtro == "popularidad"){
+            databaseSort.sort("popularidad");            
+        }
+
+
+
+
+        var contexto = {
+           // productos: databaseSort;
+        }
+
+        response('tienda', contexto)
+    });
+
+
+});
+
+
+app.get("/categoria/:item?", function (request, response) {
 
     let id = request.params.item;
 
-    if(id!=null){
-        
+    if (id != null) {
+
         let collection = database.collection("productos");
-        let query= {categoria:id};
+        let query = { categoria: id };
         let contexto = {};
-    
-        collection.find(query).toArray(function(error, result){
+
+        collection.find(query).toArray(function (error, result) {
             contexto.productos = result;
             response.render("tienda", contexto);
-            
+
             console.log(contexto);
 
-    
 
-    }); 
-}
-});
 
-app.get('/carrito-compras', function(request, response){
-    response.render("carrito-compras", {})
-    });
-
-    app.get('/checkout', function(request, response){
-        response.render("checkout", {})
         });
-
-        app.get('/producto-interno', function(request, response){
-            response.render("producto-interno", {})
-            });
-        
-
-app.get('', function(request, response){
-response.sendfile("/index.html")
+    }
 });
 
-app.get('/tienda/producto/:nombre', function(req, res){
+app.get('/carrito-compras', function (request, response) {
+    response.render("carrito-compras", {})
+});
+
+app.get('/checkout', function (request, response) {
+    response.render("checkout", {})
+});
+
+app.get('/producto-interno', function (request, response) {
+    response.render("producto-interno", {})
+});
+
+
+app.get('', function (request, response) {
+    response.sendfile("/index.html")
+});
+
+app.get('/tienda/producto/:nombre', function (req, res) {
 
     var collection = db.collection('productos');
     collection.find({ nombre: req.params.nombre })
-        .toArray(function(err, docs){
+        .toArray(function (err, docs) {
             console.log(docs);
 
             var contexto = {
@@ -172,7 +229,7 @@ app.get('/tienda/producto/:nombre', function(req, res){
         });
 });
 
-app.post('/login', function(request, response){
+app.post('/login', function (request, response) {
     // crear un archivo con la información del usuario
     console.log(request.body);
     // redireccionar a otra página
