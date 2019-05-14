@@ -616,6 +616,13 @@ footer{
   }
 }
 
+
+.hamburguesa__menu {
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
+
 @media (max-width:720px){
   .hamburguesa{
     display: block;

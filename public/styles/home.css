@@ -775,6 +775,12 @@ footer .redes-sociales img {
   margin-right: 10px;
 }
 
+.hamburguesa__menu {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  overflow: hidden;
+}
+
 @media (max-width: 720px) {
   .hamburguesa {
     display: block;

@@ -1,4 +1,4 @@
-function windowsLoad() {
+function windowsLoad(globalEvent) {
 
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
@@ -84,8 +84,9 @@ function windowsLoad() {
   botonEnviar.addEventListener("click", quitNewsletter);
   botonCerrar.addEventListener("click", quitNewsletter);
 
-  //----------------------------------------------------------------------
-  var menu ={};
+  //--------------------RESPONSIVE-----------------------------------------
+  
+  /*var menu ={};
   menu.logo = document.querySelector(".logo img");
   menu.nav = document.querySelector(".servicios");
   menu.boton = document.querySelector(".hamburguesa__icono");
@@ -111,7 +112,43 @@ function windowsLoad() {
 
     $(".hamburguesa__menu").toggle("slow");
    
-  });
+  });*/
+//---------------------------------------------------
 
+
+var menu ={};
+menu.logo = document.querySelector(".logo img");
+menu.nav = document.querySelector(".servicios");
+menu.boton = document.querySelector(".hamburguesa__icono");
+
+var seccion = {};
+seccion.logoPrin = document.querySelector(".logo");
+seccion.logoSecon = document.querySelector(".hamburguesa__logo");
+seccion.menuPrin = document.querySelector(".navegacion-bar");
+seccion.menuSecon = document.querySelector(".hamburguesa__menu");
+resizeCont(globalEvent);
+function resizeCont(event) {
+
+  let width = event.currentTarget.innerWidth;
+  if(width < 720){
+    seccion.logoSecon.appendChild(menu.logo);
+    seccion.menuSecon.appendChild(menu.nav);
+  }else{
+    seccion.logoPrin.appendChild(menu.logo);
+    seccion.menuPrin.appendChild(menu.nav);}
+}
+window.addEventListener("resize", resizeCont);
+let varia = document.querySelector(".hamburguesa__menu");
+varia.style.height = "0px";
+menu.boton.addEventListener("click", function(){
+
+  if(varia.style.height == "350px"){
+    varia.style.height = "0px";
+  }else{
+    varia.style.height = "350px";
+  }
+ 
+});
+//--------------------------------------------------
 }
 window.addEventListener("load", windowsLoad);
